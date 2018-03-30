@@ -22,7 +22,7 @@ static int snes_probe(struct usb_interface *interface, const struct usb_device_i
     printk(KERN_INFO "ID->bNumEndpoints: %02X\n",
             iface_desc->desc.bNumEndpoints);
     printk(KERN_INFO "ID->bInterfaceClass: %02X\n",
-            iface_desc->desc.bInterfaceClass);
+            iface_desc->desc.bInterfaceClass);h
  
     for (i = 0; i < iface_desc->desc.bNumEndpoints; i++)
     {
