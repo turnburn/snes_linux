@@ -1,8 +1,12 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/usb.h>
- 
+#include <linux/input.h>
+#include <linux/joystick.h>
+#include <unistd.h>
+
 static struct usb_device *device;
+
 
 //Controller Vendor ID: 0079
 //Controller Product ID: 0011
@@ -12,14 +16,13 @@ static int snes_probe(struct usb_interface *interface, const struct usb_device_i
     struct usb_host_interface *iface_desc;
     struct usb_endpoint_descriptor *endpoint;
     int i;
- 
     iface_desc = interface->cur_altsetting;
     printk(KERN_INFO "SNES_3000 is now probed: (%04X:%04X)\n",
             iface_desc->desc.bInterfaceNumber, id->idVendor, id->idProduct);
     printk(KERN_INFO "ID->bNumEndpoints: %02X\n",
             iface_desc->desc.bNumEndpoints);
     printk(KERN_INFO "ID->bInterfaceClass: %02X\n",
-            iface_desc->desc.bInterfaceClass);
+            iface_desc->desc.bInterfaceClass);h
  
     for (i = 0; i < iface_desc->desc.bNumEndpoints; i++)
     {
@@ -32,7 +35,12 @@ static int snes_probe(struct usb_interface *interface, const struct usb_device_i
         printk(KERN_INFO "ED[%d]->wMaxPacketSize: 0x%04X (%d)\n",
                 i, endpoint->wMaxPacketSize, endpoint->wMaxPacketSize);
     }
- 
+    
+    int fd = open ("/dev/input/js0", O_RDONLY);
+    struct js_event e;
+    read (fd, &e, sizeof(e))
+    if (e.type == 2)
+      printk(KERN_INFO "Button Pressed");
     device = interface_to_usbdev(interface);
     return 0;
 }
