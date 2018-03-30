@@ -3,7 +3,7 @@
 #include <linux/usb.h>
 #include <linux/input.h>
 #include <linux/joystick.h>
-#include <gunistd.h>
+#include <unistd.h>
 
 static struct usb_device *device;
 
