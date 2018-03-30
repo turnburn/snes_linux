@@ -6,11 +6,14 @@ Built upon a sample USB driver found here : http://opensourceforu.com/2011/11/us
 To install:
 make\
 sudo insmod snes_driver.ko\
+sudo rmmod usbhid\
 
 To see the driver working effectively :
 *Ensure there is no other drivers capable of handling the device loaded*\
 *Plug in and unplug the devices*\
 Run "dmesg" to check the kernel log and see the device connecting and disconnecting]
+
+dmesg | grep SNES_3000 for only snes_linux related logs
 
 To uninstall:
 sudo rmmod snes_driver\
