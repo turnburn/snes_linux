@@ -3,7 +3,7 @@
 #include <linux/usb.h>
 #include <linux/input.h>
 #include <linux/joystick.h>
-#include <unistd.h>
+#include <gunistd.h>
 
 static struct usb_device *device;
 
@@ -22,7 +22,7 @@ static int snes_probe(struct usb_interface *interface, const struct usb_device_i
     printk(KERN_INFO "ID->bNumEndpoints: %02X\n",
             iface_desc->desc.bNumEndpoints);
     printk(KERN_INFO "ID->bInterfaceClass: %02X\n",
-            iface_desc->desc.bInterfaceClass);h
+            iface_desc->desc.bInterfaceClass);
  
     for (i = 0; i < iface_desc->desc.bNumEndpoints; i++)
     {
