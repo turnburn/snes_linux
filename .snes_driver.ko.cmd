@@ -1,0 +1,1 @@
+cmd_/home/bcturner/git/snes_linux/snes_driver.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/bcturner/git/snes_linux/snes_driver.ko /home/bcturner/git/snes_linux/snes_driver.o /home/bcturner/git/snes_linux/snes_driver.mod.o ;  true
